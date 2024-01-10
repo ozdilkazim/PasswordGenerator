@@ -1,91 +1,91 @@
 // Array of special characters to be included in password
 var specialCharacters = [
-  '@',
-  '%',
-  '+',
-  '\\',
-  '/',
-  "'",
-  '!',
-  '#',
-  '$',
-  '^',
-  '?',
-  ':',
-  ',',
-  ')',
-  '(',
-  '}',
-  '{',
-  ']',
-  '[',
-  '~',
-  '-',
-  '_',
-  '.'
+  `@`,
+  `%`,
+  `+`,
+  `\\`,
+  `/`,
+  "`",
+  `!`,
+  `#`,
+  `$`,
+  `^`,
+  `?`,
+  `:`,
+  `,`,
+  `)`,
+  `(`,
+  `}`,
+  `{`,
+  `]`,
+  `[`,
+  `~`,
+  `-`,
+  `_`,
+  `.`
 ];
 
 // Array of numeric characters to be included in password
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var numericCharacters = [`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`];
 
 // Array of lowercase characters to be included in password
 var lowerCasedCharacters = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z'
+  `a`,
+  `b`,
+  `c`,
+  `d`,
+  `e`,
+  `f`,
+  `g`,
+  `h`,
+  `i`,
+  `j`,
+  `k`,
+  `l`,
+  `m`,
+  `n`,
+  `o`,
+  `p`,
+  `q`,
+  `r`,
+  `s`,
+  `t`,
+  `u`,
+  `v`,
+  `w`,
+  `x`,
+  `y`,
+  `z`
 ];
 
 // Array of uppercase characters to be included in password
 var upperCasedCharacters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z'
+  `A`,
+  `B`,
+  `C`,
+  `D`,
+  `E`,
+  `F`,
+  `G`,
+  `H`,
+  `I`,
+  `J`,
+  `K`,
+  `L`,
+  `M`,
+  `N`,
+  `O`,
+  `P`,
+  `Q`,
+  `R`,
+  `S`,
+  `T`,
+  `U`,
+  `V`,
+  `W`,
+  `X`,
+  `Y`,
+  `Z`
 ];
 var passwordOptions = {
   numberOfChars : 0,
@@ -96,15 +96,17 @@ var passwordOptions = {
   criteria: [],
   p : [], 
 }
+
+var answer = null;
 // Function to prompt user for password options
 function getPasswordOptions() {
   // Ask character lenght
   passwordOptions.numberOfChars = prompt(`How many characters would you like the passwoord? (min:8 and max:128)`);
   // Check if character lenght satisfies requirements.
-  if (passwordOptions.numberOfChars < 8 || passwordOptions.numberOfChars > 128 || !passwordOptions.numberOfChars) 
-  {   
+  while (passwordOptions.numberOfChars < 8 || passwordOptions.numberOfChars > 128) {  
     alert(`Please enter a valid value!`);
     passwordOptions.numberOfChars = prompt(`How many characters would you like the passwoord? (min:8 and max:128)`);
+    passwordOptions.numberOfChars = parseInt(passwordOptions.numberOfChars);
   }
   // Ask if it includes lowercase 
   passwordOptions.lowercase = confirm(`Your password includes LOWERCASE characters?`);
@@ -115,7 +117,7 @@ function getPasswordOptions() {
   // Ask if it includes uppercase 
   passwordOptions.special = confirm(`Your password includes SPECIAL characters?`);
   // Check if at least one selection is made.
-  if (!passwordOptions.lowercase && !passwordOptions.uppercase && !passwordOptions.numeric && !passwordOptions.special) {
+  while (!passwordOptions.lowercase && !passwordOptions.uppercase && !passwordOptions.numeric && !passwordOptions.special) {
       alert(`Please select at least one option!`);
       // Ask if it includes lowercase 
       passwordOptions.lowercase = confirm(`Your password includes LOWERCASE characters?`);
@@ -179,14 +181,14 @@ function generatePassword() {
 
 // console.log(passwordOptions);
 // Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+var generateBtn = document.querySelector(`#generate`);
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+  var passwordText = document.querySelector(`#password`);
   passwordText.value = password;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener(`click`, writePassword);
