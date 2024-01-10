@@ -6,7 +6,7 @@
   <h3 align="center">Password Generator by using JavaScript</h3>
 
   <p align="center">
-    This is a password generator following options :
+    This is a password generator that has following options :
     <ul align="center" style="list-style-type: none">
       <li>8-128 Characters</li>
       <li>Lowercase Characters</li>

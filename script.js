@@ -112,9 +112,9 @@ function getPasswordOptions() {
   passwordOptions.lowercase = confirm(`Your password includes LOWERCASE characters?`);
   // Ask if it includes uppercase 
   passwordOptions.uppercase = confirm(`Your password includes UPPERCASE characters?`);
-  // Ask if it includes uppercase 
+  // Ask if it includes numeric 
   passwordOptions.numeric = confirm(`Your password includes NUMERIC characters?`);
-  // Ask if it includes uppercase 
+  // Ask if it includes special 
   passwordOptions.special = confirm(`Your password includes SPECIAL characters?`);
   // Check if at least one selection is made.
   while (!passwordOptions.lowercase && !passwordOptions.uppercase && !passwordOptions.numeric && !passwordOptions.special) {
@@ -123,9 +123,9 @@ function getPasswordOptions() {
       passwordOptions.lowercase = confirm(`Your password includes LOWERCASE characters?`);
       // Ask if it includes uppercase 
       passwordOptions.uppercase = confirm(`Your password includes UPPERCASE characters?`);
-      // Ask if it includes uppercase 
+      // Ask if it includes numeric 
       passwordOptions.numeric = confirm(`Your password includes NUMERIC characters?`);
-      // Ask if it includes uppercase 
+      // Ask if it includes special 
       passwordOptions.special = confirm(`Your password includes SPECIAL characters?`);
   }
 }
@@ -168,7 +168,6 @@ function getRandom() {
     passwordOptions.criteria = specialCharacters;
   }
 }
-
 getRandom();
 
 // Function to generate password with user input
