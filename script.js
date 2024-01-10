@@ -97,17 +97,17 @@ var passwordOptions = {
   p : [], 
 }
 
-var answer = null;
 // Function to prompt user for password options
 function getPasswordOptions() {
+ 
   // Ask character lenght
   passwordOptions.numberOfChars = prompt(`How many characters would you like the passwoord? (min:8 and max:128)`);
   // Check if character lenght satisfies requirements.
   while (passwordOptions.numberOfChars < 8 || passwordOptions.numberOfChars > 128) {  
     alert(`Please enter a valid value!`);
     passwordOptions.numberOfChars = prompt(`How many characters would you like the passwoord? (min:8 and max:128)`);
-    passwordOptions.numberOfChars = parseInt(passwordOptions.numberOfChars);
   }
+ 
   // Ask if it includes lowercase 
   passwordOptions.lowercase = confirm(`Your password includes LOWERCASE characters?`);
   // Ask if it includes uppercase 
@@ -116,9 +116,11 @@ function getPasswordOptions() {
   passwordOptions.numeric = confirm(`Your password includes NUMERIC characters?`);
   // Ask if it includes special 
   passwordOptions.special = confirm(`Your password includes SPECIAL characters?`);
+ 
   // Check if at least one selection is made.
   while (!passwordOptions.lowercase && !passwordOptions.uppercase && !passwordOptions.numeric && !passwordOptions.special) {
       alert(`Please select at least one option!`);
+     
       // Ask if it includes lowercase 
       passwordOptions.lowercase = confirm(`Your password includes LOWERCASE characters?`);
       // Ask if it includes uppercase 
@@ -133,7 +135,8 @@ getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom() {
- // 3 criteria
+ 
+  // 3 criteria
   if (passwordOptions.lowercase && passwordOptions.uppercase && passwordOptions.numeric && passwordOptions.special) {
     passwordOptions.criteria = lowerCasedCharacters.concat(upperCasedCharacters, numericCharacters,  specialCharacters);  
   } else if (passwordOptions.lowercase && !passwordOptions.uppercase && passwordOptions.numeric && passwordOptions.special) {
@@ -144,6 +147,7 @@ function getRandom() {
     passwordOptions.criteria = lowerCasedCharacters.concat(upperCasedCharacters,  numericCharacters);  
   } else if (!passwordOptions.lowercase && passwordOptions.uppercase && passwordOptions.numeric && passwordOptions.special) {
     passwordOptions.criteria = upperCasedCharacters.concat(numericCharacters, specialCharacters);  
+  
   // 2 criteria
   } else if (passwordOptions.lowercase && passwordOptions.uppercase && !passwordOptions.numeric && !passwordOptions.special) {
     passwordOptions.criteria = lowerCasedCharacters.concat(upperCasedCharacters);  
@@ -157,6 +161,7 @@ function getRandom() {
     passwordOptions.criteria = upperCasedCharacters.concat(specialCharacters);  
   } else if (!passwordOptions.lowercase && !passwordOptions.uppercase && passwordOptions.numeric && passwordOptions.special) {
     passwordOptions.criteria = numericCharacters.concat(specialCharacters);  
+  
   // 1 criteria
   } else if (passwordOptions.lowercase && !passwordOptions.uppercase && !passwordOptions.numeric && !passwordOptions.special) {
     passwordOptions.criteria = lowerCasedCharacters;
@@ -178,7 +183,6 @@ function generatePassword() {
   return passwordOptions.p;
 }
 
-// console.log(passwordOptions);
 // Get references to the #generate element
 var generateBtn = document.querySelector(`#generate`);
 
