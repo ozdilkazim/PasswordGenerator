@@ -131,8 +131,8 @@ function getPasswordOptions() {
       passwordOptions.special = confirm(`Your password includes SPECIAL characters?`);
   }
 }
-getPasswordOptions();
 
+getPasswordOptions();
 // Function for getting a random element from an array
 function getRandom() {
  
@@ -173,10 +173,11 @@ function getRandom() {
     passwordOptions.criteria = specialCharacters;
   }
 }
-getRandom();
 
 // Function to generate password with user input
 function generatePassword() {
+  clrPassword();
+  getRandom();
   for (var i = 0; i < passwordOptions.numberOfChars; i++) {
     passwordOptions.p += passwordOptions.criteria[Math.floor(Math.random() * passwordOptions.criteria.length)];
   }
@@ -185,13 +186,17 @@ function generatePassword() {
 
 // Get references to the #generate element
 var generateBtn = document.querySelector(`#generate`);
-
+var passwordText = document.querySelector(`#password`);
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector(`#password`);
   passwordText.value = password;
 }
+// Clear previous password remain
+function clrPassword() {
+  passwordOptions.p = ``;
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener(`click`, writePassword);
