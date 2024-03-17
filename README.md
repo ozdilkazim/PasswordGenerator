@@ -19,9 +19,7 @@
 </p>
 
 <br>
-<a href="https://ozdilkazim.github.io/PasswordGenerator/">
-  <h1> SEE LIVE PAGE</h1>
-</a>
+  <h1><a href="https://ozdilkazim.github.io/PasswordGenerator/"> SEE LIVE PAGE</a></h1>
 <br>
 
 ## Documentation for previous releases
